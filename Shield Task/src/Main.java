@@ -1,65 +1,127 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 class Avengers {
+    private String aveName;
+    private String status;
+    private ArrayList<String> missList = new ArrayList<>();
+
+    public Avengers(String aveName) {
+        this.aveName = aveName;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public void addMissList(String missList) {
+        this.missList.add(missList);
+    }
+
+    public String getAveName() {
+        return aveName;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public ArrayList<String> getMissList() {
+        return missList;
+    }
 }
 
 class Missions {
     private String missName;
     private String status;
-    private String aveList;
-    private String details;
-    Missions() {
-        display();
-    }
-    Missions(String aveList, String missName, String details, String status) {
+    private ArrayList<String> aveList = new ArrayList<>();
+
+    public void setMissName(String missName) {
         this.missName = missName;
-        this.aveList = aveList;
-        this.details = details;
+    }
+
+    public void setStatus(String status) {
         this.status = status;
     }
 
-    public void display() {
-        System.out.println("Mission Name: " + missName);
-        System.out.println("Status: " + status);
-        System.out.println("Avengers List: " + aveList);
-        System.out.println("Mission Details: " + details);
+    public void addAveList(String ave) {
+        this.aveList.add(ave);
+    }
+
+    public String getMissName() {
+        return missName;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public ArrayList<String> getAveList() {
+        return aveList;
     }
 }
+
 public class Main {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
-        System.out.println("=======------S.H.I.E.L.D ------=========");
-        System.out.println("");
+        System.out.println("=======------S.H.I.E.L.D------=========");
+        System.out.println();
         System.out.println("Welcome to Captain Fury. (Note: Below interface is for Captain Fury)");
-        System.out.println("");
+        System.out.println();
         System.out.println("1. Assign mission to Avengers");
         System.out.println("2. Check the missions");
-        System.out.println("3. Check mission’s details");
-        System.out.println("4. Check Avenger’s details");
-        System.out.println("5. Update Mission’s status");
-        System.out.println("6. List Avengers");
-        System.out.println("7. Assign avenger to mission.");
-        System.out.println("");
+        System.out.println("3. Check Avenger’s details");
+        System.out.println("4. Update Mission’s status");
+        System.out.println("5. List Avengers");
+        System.out.println("6. Assign avenger to mission.");
+        System.out.println();
+
+        ArrayList<Missions> missionList = new ArrayList<>();
+        ArrayList<Avengers> avengersList = new ArrayList<>();
+
         for (int i = 0; i < 15; i++) {
             System.out.println("Enter the option: ");
             int choice = in.nextInt();
 
             switch (choice) {
                 case 1:
+                    Missions mission = new Missions();
                     System.out.println("Enter Avengers: ");
                     String avengers = in.next();
                     System.out.println("Enter Mission Name: ");
                     String missName = in.next();
                     System.out.println("Enter Mission Details: ");
                     String missDetails = in.next();
-                    Missions obj = new Missions(avengers, missName, missDetails, "assigned");
+
+                    mission.setMissName(missName);
+                    mission.setStatus(missDetails);
+                    mission.addAveList(avengers);
+
+                    missionList.add(mission);
                     break;
 
                 case 2:
-                    Missions obj1 = new Missions();
+                    for (Missions m : missionList) {
+                        System.out.println("Mission Name: " + m.getMissName());
+                        System.out.println("Status: " + m.getStatus());
+                        System.out.println("Avengers List: " + m.getAveList());
+                    }
+                    break;
+                case 3:
+                    avengersList.add(new Avengers("Iron Man"));
+                    avengersList.add(new Avengers("Hulk"));
+                    avengersList.add(new Avengers("Thor"));
+                    avengersList.add(new Avengers("Hawkeye"));
+                    avengersList.add(new Avengers("Captain America"));
+                    for (Avengers a : avengersList) {
+                        System.out.println("Avenger Name: " + a.getAveName());
+                        System.out.println("Status: " + a.getStatus());
+                        System.out.println("Mission List: " + a.getMissList());
+                    }
+                    break;
+                case 4:
                     break;
             }
         }
     }
-
 }
