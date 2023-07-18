@@ -86,17 +86,22 @@ public class Main {
             switch (choice) {
                 case 1:
                     Missions mission = new Missions();
+
                     System.out.println("Enter Avengers: ");
-                    String avengers = in.next();
+                    String avengers = in.nextLine();
                     System.out.println("Enter Mission Name: ");
                     String missName = in.next();
-                    System.out.println("Enter Mission Details: ");
-                    String missDetails = in.next();
+                    System.out.println("Enter Mission Status: ");
+                    String missStatus = in.next();
 
-                    mission.setMissName(missName);
-                    mission.setStatus(missDetails);
+                    Avengers ave = new Avengers(avengers);
+                    ave.setStatus(missStatus);
+                    ave.addMissList(missName);
+                    avengersList.add(ave);
+
                     mission.addAveList(avengers);
-
+                    mission.setMissName(missName);
+                    mission.setStatus(missStatus);
                     missionList.add(mission);
                     break;
 
@@ -108,11 +113,6 @@ public class Main {
                     }
                     break;
                 case 3:
-                    avengersList.add(new Avengers("Iron Man"));
-                    avengersList.add(new Avengers("Hulk"));
-                    avengersList.add(new Avengers("Thor"));
-                    avengersList.add(new Avengers("Hawkeye"));
-                    avengersList.add(new Avengers("Captain America"));
                     for (Avengers a : avengersList) {
                         System.out.println("Avenger Name: " + a.getAveName());
                         System.out.println("Status: " + a.getStatus());
@@ -120,6 +120,38 @@ public class Main {
                     }
                     break;
                 case 4:
+                    System.out.println("Enter the mission name to update status: ");
+                    String missionName = in.next();
+                    System.out.println("Enter the new status: ");
+                    String newStatus = in.next();
+                    for (Missions m : missionList) {
+                        if (m.getMissName().equals(missionName)) {
+                            m.setStatus(newStatus);
+                            break;
+                        }
+                    }
+                    break;
+                case 5:
+                    for (Avengers a : avengersList) {
+                        System.out.println("Avenger Name: " + a.getAveName());
+                    }
+                    break;
+                case 6:
+                    System.out.println("Enter the mission name to assign an avenger: ");
+                    String missionToAssign = in.next();
+                    System.out.println("Enter the avenger name: ");
+                    String avengerToAssign = in.next();
+                    for (Missions m : missionList) {
+                        if (m.getMissName().equals(missionToAssign)) {
+                            if (m.getAveList().size() < 2) {
+                                m.addAveList(avengerToAssign);
+                                System.out.println("Avenger assigned to the mission successfully.");
+                            } else {
+                                System.out.println("Maximum avengers already assigned to this mission.");
+                            }
+                            break;
+                        }
+                    }
                     break;
             }
         }
