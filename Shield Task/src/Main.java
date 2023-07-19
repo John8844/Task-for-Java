@@ -1,42 +1,40 @@
 import major.Avenger;
-import worker.workerList;
+import major.Mission;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 public class Main {
-    private static Scanner in = new Scanner(System.in);
-    private static List<Avenger> avengers;
     public static void main(String[] args) {
-        workerList obj=new workerList();
-        initializeAvengers();
+
         System.out.println("=======------S.H.I.E.L.D ------=========");
         System.out.println("Welcome to Captain Fury. (Note: Below interface is for Captain Fury)");
 
-        int option=0;
-        while (option != 8) {
-            obj.PrintMenu();
-            option = in.nextInt();
-            switch (option) {
+        int option = 0;
+        Scanner in = new Scanner(System.in);
+
+        while (option == 0) {
+            choices();
+            System.out.println("Enter your choice :");
+            int choice=in.nextInt();
+            switch (choice){
                 case 1:
-                    obj.assignMission();
+                    Mission.addMission();
                     break;
                 case 2:
-                    obj.displayMissions();
+                    Avenger.addAvengers();
                     break;
-
             }
         }
     }
-    private static void initializeAvengers() {
-        avengers = new ArrayList<>();
-
-        avengers.add(new Avenger("Captain America"));
-        avengers.add(new Avenger("Iron Man"));
-        avengers.add(new Avenger("Hulk"));
-        avengers.add(new Avenger("Thor"));
-        avengers.add(new Avenger("Black Widow"));
-        avengers.add(new Avenger("Hawkeye"));
+    private static void choices() {
+        System.out.println("1. Assign mission to Avengers");
+        System.out.println("2. Check the missions");
+        System.out.println("3. Check Avenger’s details");
+        System.out.println("4. Update Mission’s status");
+        System.out.println("5. List Avengers");
+        System.out.println("6. Assign avenger to mission.");
+        System.out.println();
     }
+
 }
+
