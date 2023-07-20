@@ -1,53 +1,33 @@
 package major;
 
-import java.util.ArrayList;
+public class Avenger {
+    private String name;
+    private boolean available;
+    private int assignedMissions;
 
-public class Avenger{
-    private String AvengerName;
-    private boolean AvengerStatus;
-    private int capacity;
-
-    public Avenger(String aveName, boolean aveStatus, int cap) {
-        this.AvengerName = aveName;
-        this.AvengerStatus = aveStatus;
-        this.capacity = cap ;
+    public Avenger(String name) {
+        this.name = name;
+        this.available = true;
+        this.assignedMissions = 0;
     }
 
-    public void setAvengerName(String avengerName) {
-        AvengerName = avengerName;
+    public String getName() {
+        return name;
     }
 
-    public void setAvengerStatus(boolean avengerStatus) {
-        AvengerStatus = avengerStatus;
+    public boolean isAvailable() {
+        return available;
     }
 
-    public void setCapacity(int capacity) {
-        this.capacity = capacity;
+    public void setAvailable(boolean available) {
+        this.available = available;
     }
 
-    public String getAvengerName() {
-        return AvengerName;
+    public int getAssignedMissions() {
+        return assignedMissions;
     }
 
-    public boolean isAvengerStatus() {
-        return AvengerStatus;
-    }
-
-    public int getCapacity() {
-        return capacity;
-    }
-    public void AvengersList(){
-        System.out.println(" Avenger " + AvengerName + " is " +AvengerStatus+ " Mission Details : "+capacity);
-    }
-
-    public static void addAvengers(){
-        ArrayList<Avenger> avengers = new ArrayList<>();
-
-        avengers.add(new Avenger("Hulk", true, 0));
-        avengers.add(new Avenger("Thor", true, 0));
-        avengers.add(new Avenger("Iron", true, 0));
-        for (Avenger avenger : avengers){
-            avenger.AvengersList();
-        }
+    public void assignMission() {
+        this.assignedMissions++;
     }
 }
