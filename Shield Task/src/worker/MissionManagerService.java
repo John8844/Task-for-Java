@@ -9,6 +9,10 @@ public class MissionManagerService {
     Scanner scanner=new Scanner(System.in);
     HelperService helperService=new HelperService();
 
+
+    /**
+     * Assign mission to the avenger
+     */
     public void assignMission() {
         scanner.nextLine();
         System.out.println("Enter Avengers : ");
@@ -29,6 +33,10 @@ public class MissionManagerService {
         }
     }
 
+
+    /**
+     * List of missions
+     */
     public void listMissions(){
         System.out.println("Missions:");
         for (Mission mission : GlobalService.masterMissionList) {
@@ -36,6 +44,11 @@ public class MissionManagerService {
                     " | Avengers: " + String.join(", ", mission.getAssignedAvengers()));
         }
     }
+
+
+    /**
+     * List of Avengers
+     */
     public void listAvengers() {
         System.out.println("Avengers:");
         for (Avenger avenger : GlobalService.masterAvengerList) {
@@ -44,6 +57,11 @@ public class MissionManagerService {
                     avenger.getAssignedMissions());
         }
     }
+
+
+    /**
+     * Mission Details
+     */
     public void missionDetails(){
         scanner.nextLine();
         System.out.println("Enter Mission Name: ");
@@ -61,6 +79,11 @@ public class MissionManagerService {
             System.out.println("Mission not found: " + missionToView);
         }
     }
+
+
+    /**
+     * Avenger Details
+     */
     public void avengerDetails(){
         scanner.nextLine();
         System.out.println("Enter Avenger Name: ");
