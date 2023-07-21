@@ -5,11 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4f895e29-4838-4064-b2b2-513e85b1f15c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Shield Task.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Shield.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/major/Avenger.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/major/Avenger.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/major/Mission.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/major/Mission.java" afterDir="false" />
     </list>
@@ -38,6 +35,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "last_opened_file_path": "C:/Users/johnson/Desktop/Task for Java/Shield Task",
     "onboarding.tips.debug.path": "C:/Users/johnson/Desktop/Task for Java/Shield Task/src/Main.java"
   }
 }]]></component>

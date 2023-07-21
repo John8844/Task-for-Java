@@ -1,5 +1,7 @@
 package major;
 
+import worker.GlobalService;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,5 +36,8 @@ public class Mission {
 
     public void setMissionStatus(String missionStatus) {
         this.missionStatus = missionStatus;
+    }
+    public void addMission(Mission mission) {
+        GlobalService.masterMissionList.add(mission);
     }
 }

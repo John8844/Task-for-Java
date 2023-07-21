@@ -1,5 +1,7 @@
 package major;
 
+import worker.GlobalService;
+
 public class Avenger {
     private String name;
     private boolean available;
@@ -30,4 +32,5 @@ public class Avenger {
     public void assignMission() {
         this.assignedMissions++;
     }
+
 }
