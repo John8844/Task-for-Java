@@ -48,6 +48,8 @@ public class HelperService {
         System.out.println("Avenger Name : " + avenger.getName());
         System.out.println("Available : " + avenger.isAvailable());
         System.out.println("Assigned Missions : " + avenger.getAssignedMissions());
+        System.out.println("Completed Missions : " + avenger.getCompletedMissions());
+
     }
 
     /**
@@ -66,6 +68,47 @@ public class HelperService {
 
         } else {
             System.out.println("Sorry, " + avenger.getName() + " has already been working on two missions.");
+        }
+    }
+
+    /**
+     * update mission status
+     * @param mission
+     * @param newStatus
+     */
+    public void updateMissionStatus(Mission mission, String newStatus) {
+        mission.setMissionStatus(newStatus);
+        notifyAvengersForStatusUpdate(mission);
+        System.out.println("Mission status updated.");
+    }
+    private void notifyAvengersForStatusUpdate(Mission mission) {
+        for (String avengerName : mission.getAssignedAvengers()) {
+            Avenger avenger = findAvenger(avengerName);
+            if (avenger != null) {
+                avenger.completeMission();
+                if (mission.getMissionStatus().equals("Completed")) {
+                    avenger.setAvailable(true);
+                }
+            }
+        }
+    }
+
+    /**
+     *  Assign Avenger to mission
+     * @param avenger
+     * @param mission
+     */
+    public void assignAvengerToMission(Avenger avenger, Mission mission) {
+        if (mission.getAssignedAvengers().size() >= 2) {
+            System.out.println("Error: Maximum two avengers can be assigned to a mission.");
+        } else if (mission.getAssignedAvengers().contains(avenger.getName())) {
+            System.out.println("Error: " + avenger.getName() + " is already assigned to this mission.");
+        } else {
+            avenger.assignMission();
+            avenger.setAvailable(false);
+            mission.getAssignedAvengers().add(avenger.getName());
+            notifyAvenger(avenger, mission);
+            System.out.println(avenger.getName() + " is assigned to the mission: " + mission.getMissionName());
         }
     }
 

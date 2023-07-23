@@ -30,7 +30,16 @@ public class Main {
                     missionManagerService.avengerDetails();
                     break;
                 case 5:
+                    missionManagerService.updateMissionStatus();
+                    break;
+                case 6:
                     missionManagerService.listAvengers();
+                    break;
+                case 7:
+                    missionManagerService.assignAvenger();
+                    break;
+                default:
+                    System.out.println("Invalid option. Please try again.");
                     break;
             }
         }

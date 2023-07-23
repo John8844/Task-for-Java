@@ -14,7 +14,6 @@ public class MissionManagerService {
      * Assign mission to the avenger
      */
     public void assignMission() {
-        scanner.nextLine();
         System.out.println("Enter Avengers : ");
         String[] avengersInput = scanner.nextLine().split(", ");
         System.out.println("Enter Mission Name: ");
@@ -63,7 +62,6 @@ public class MissionManagerService {
      * Mission Details
      */
     public void missionDetails(){
-        scanner.nextLine();
         System.out.println("Enter Mission Name: ");
         String missionToView = scanner.nextLine();
         Mission mission = null;
@@ -85,7 +83,6 @@ public class MissionManagerService {
      * Avenger Details
      */
     public void avengerDetails(){
-        scanner.nextLine();
         System.out.println("Enter Avenger Name: ");
         String avengerToView = scanner.nextLine();
         Avenger avenger = helperService.findAvenger(avengerToView);
@@ -93,6 +90,52 @@ public class MissionManagerService {
             helperService.getAvengerDetails(avenger);
         } else {
             System.out.println("Avenger not found: " + avengerToView);
+        }
+    }
+
+
+    /**
+     * Update Mission Status
+     */
+    public void updateMissionStatus(){
+        System.out.println("Enter Mission Name: ");
+        String missionToUpdate = scanner.nextLine();
+        Mission missionToUpdateStatus = null;
+        for (Mission m : GlobalService.masterMissionList) {
+            if (m.getMissionName().equalsIgnoreCase(missionToUpdate)) {
+                missionToUpdateStatus = m;
+                break;
+            }
+        }
+        if (missionToUpdateStatus != null) {
+            System.out.println("Enter new status: ");
+            String newStatus = scanner.nextLine();
+            helperService.updateMissionStatus(missionToUpdateStatus, newStatus);
+        } else {
+            System.out.println("Mission not found: " + missionToUpdate);
+        }
+    }
+
+    /**
+     * Assign avenger to mission
+     */
+    public void assignAvenger(){
+        System.out.println("Enter Avenger Name: ");
+        String avengerName = scanner.nextLine();
+        System.out.println("Enter Mission Name: ");
+        String missionNameToAssign = scanner.nextLine();
+        Avenger avengerToAssign = helperService.findAvenger(avengerName);
+        Mission missionToAssign = null;
+        for (Mission m : GlobalService.masterMissionList) {
+            if (m.getMissionName().equalsIgnoreCase(missionNameToAssign)) {
+                missionToAssign = m;
+                break;
+            }
+        }
+        if (avengerToAssign != null && missionToAssign != null) {
+            helperService.assignAvengerToMission(avengerToAssign, missionToAssign);
+        } else {
+            System.out.println("Error: Avenger or Mission not found.");
         }
     }
 }
